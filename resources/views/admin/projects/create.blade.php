@@ -44,7 +44,6 @@
                             class="form-control"
                             id="type_id"
                             name="type_id"
-                            required
                         >
                             <option value="">Select Type</option>
                             @foreach ($types as $type)
@@ -96,14 +95,14 @@
                     </div>
                     <div class="mb-3">
                         <label for="programming_language" class="form-label">
-                            Programming Language
+                            Stack
                         </label>
                         <select
                             class="form-control"
                             id="programming_language"
                             name="programming_language"
-                            required
                         >
+                            <option value="">Select Stack</option>
                             @foreach ($programmingLanguages as $language)
                                 <option
                                     value="{{ $language }}"
@@ -116,12 +115,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="status" class="form-label">Status</label>
-                        <select
-                            class="form-control"
-                            id="status"
-                            name="status"
-                            required
-                        >
+                        <select class="form-control" id="status" name="status">
+                            <option value="">Select Status</option>
                             @foreach ($statuses as $status)
                                 <option
                                     value="{{ $status }}"
