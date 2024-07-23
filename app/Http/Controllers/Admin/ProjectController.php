@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Type;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
@@ -25,10 +26,11 @@ class ProjectController extends Controller
      */
     public function create()
     {
+        $types =  Type::all();
         $programmingLanguages = ['PHP', 'JavaScript', 'Vite', 'Vue', 'HTML', 'CSS', 'Laravel'];
         $statuses = ['Completed', 'In Progress'];
 
-        return view('admin.projects.create', compact('types', 'programmingLanguages', 'statuses'));
+        return view('admin.projects.create', compact('programmingLanguages', 'statuses', 'types'));
     }
 
     /**
@@ -40,24 +42,18 @@ class ProjectController extends Controller
         $data['slug'] = Str::of($data['title'])->slug();
 
         // Handle file upload
-        $file = $request->file('preview');
-        $fileName = $file->getClientOriginalName();
-        $imagePath = $file->storeAs('images', $fileName, 'public');
-        $data['preview_path'] = 'storage/' . $imagePath;
+        if ($request->hasFile('preview')) {
+            $file = $request->file('preview');
+            $fileName = $file->getClientOriginalName();
+            $imagePath = $file->storeAs('images', $fileName, 'public');
+            $data['preview_path'] = 'storage/' . $imagePath;
+        } else {
+            $data['preview_path'] = null;
+        }
 
+        $project = Project::create($data);
 
-        $project = new Project();
-        $project->title = $data['title'];
-        $project->description = $data['description'];
-        $project->key_features = $data['key_features'];
-        $project->programming_language = $data['programming_language'];
-        $project->link_to_website = $data['link_to_website'];
-        $project->slug = $data['slug'];
-        $project->status = $data['status'];
-        $project->preview_path = $data['preview_path'];
-        $project->save();
-
-        return redirect()->route('admin.projects.index', $project)->with('message', 'Project ' . $project->title . ' successfully created');
+        return redirect()->route('admin.projects.index')->with('message', 'Project ' . $project->title . ' successfully created');
     }
 
     /**
@@ -73,10 +69,11 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
+        $types =  Type::all();
         $programmingLanguages = ['PHP', 'JavaScript', 'Vite', 'Vue', 'HTML', 'CSS', 'Laravel'];
         $statuses = ['Completed', 'In Progress'];
 
-        return view('admin.projects.edit', compact('project', 'types', 'programmingLanguages', 'statuses'));
+        return view('admin.projects.edit', compact('project', 'programmingLanguages', 'statuses', 'types'));
     }
 
     /**
@@ -93,19 +90,11 @@ class ProjectController extends Controller
             $fileName = $file->getClientOriginalName();
             $imagePath = $file->storeAs('images', $fileName, 'public');
             $data['preview_path'] = 'storage/' . $imagePath;
+        } else {
+            $data['preview_path'] = $project->preview_path;
         }
 
         $project->update($data);
-        // $project->title = $data['title'];
-        // $project->type = $data['type'];
-        // $project->description = $data['description'];
-        // $project->key_features = $data['key_features'];
-        // $project->programming_language = $data['programming_language'];
-        // $project->link_to_website = $data['link_to_website'];
-        // $project->slug = $data['slug'];
-        // $project->status = $data['status'];
-        // $project->preview_path = $data['preview_path'];
-        // $project->save();
 
         return redirect()->route('admin.projects.show', $project)->with('message', $project->title . ' successfully updated');
     }
@@ -115,7 +104,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        // controlla se il progetto ha un'immagine collegata e la elimina
+        // Check if the project has a linked image and delete it
         if ($project->preview_path) {
             Storage::delete($project->preview_path);
         }

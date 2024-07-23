@@ -38,14 +38,14 @@
                             <div class="col-md-6">
                                 <p class="mb-2">
                                     <strong>Type:</strong>
-                                    {{ $project->type }}
+                                    {{ $project->type?->name }}
                                 </p>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <p class="mb-2">
-                                    <strong>Programming Language:</strong>
+                                    <strong>Stack:</strong>
                                     {{ $project->programming_language }}
                                 </p>
                             </div>

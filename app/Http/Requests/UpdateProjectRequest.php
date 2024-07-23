@@ -25,6 +25,7 @@ class UpdateProjectRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'min:5', 'max:255', Rule::unique('projects')->ignore($this->route('project'))],
             'description' => 'nullable|string',
+            'type_id' => 'nullable|exists:types,id',
             'key_features' => 'nullable|string',
             'link_to_website' => 'nullable|url',
             'programming_language' => 'required|string|max:100',

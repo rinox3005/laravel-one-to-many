@@ -40,19 +40,20 @@
                         />
                     </div>
                     <div class="mb-3">
-                        <label for="type" class="form-label">Type</label>
+                        <label for="type_id" class="form-label">Type</label>
                         <select
                             class="form-control"
-                            id="type"
-                            name="type"
+                            id="type_id"
+                            name="type_id"
                             required
                         >
+                            <option value="">Select Type</option>
                             @foreach ($types as $type)
                                 <option
-                                    value="{{ $type }}"
-                                    {{ old("type", $project->type) == $type ? "selected" : "" }}
+                                    value="{{ $type->id }}"
+                                    @if (old('type_id', $project->type_id) == $type->id) selected @endif
                                 >
-                                    {{ $type }}
+                                    {{ $type->name }}
                                 </option>
                             @endforeach
                         </select>
