@@ -16,19 +16,13 @@ Creare la migration di modifica per la tabella projects per aggiungere la chiave
 
 ## Milestone 3
 
-Aggiungere ai model Type e Project i metodi per definire la relazione one to many.
+-   Aggiungere ai model Type e Project i metodi per definire la relazione one to many.
 
-## Milestone 4
+-   Visualizzare nella pagina di dettaglio di un progetto la tipologia associata, se presente.
 
-Visualizzare nella pagina di dettaglio di un progetto la tipologia associata, se presente.
+-   Permettere all’utente di associare una tipologia nella pagina di creazione e modifica di un progetto.
 
-## Milestone 5
-
-Permettere all’utente di associare una tipologia nella pagina di creazione e modifica di un progetto.
-
-## Milestone 6
-
-gestire il salvataggio dell’associazione progetto-tipologia con opportune regole di validazione
+-   Gestire il salvataggio dell’associazione progetto-tipologia con opportune regole di validazione
 
 # Bonus 1
 
