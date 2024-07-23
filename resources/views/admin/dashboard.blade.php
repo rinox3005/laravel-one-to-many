@@ -71,11 +71,47 @@
                             <div class="col-md-4">
                                 <div class="card bg-warning mb-3 text-white">
                                     <div class="card-header">
-                                        Pending Projects
+                                        Projects In Progress
                                     </div>
                                     <div class="card-body">
                                         <h5 class="card-title">
-                                            {{ $pendingProjects }}
+                                            {{ $inProgressProjects }}
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card bg-info mb-3 text-white">
+                                    <div class="card-header">
+                                        Front-End Projects
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            {{ $FrontEndProjects }}
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card bg-danger mb-3 text-white">
+                                    <div class="card-header">
+                                        Back-End Projects
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            {{ $BackEndProjects }}
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card bg-dark mb-3 text-white">
+                                    <div class="card-header">
+                                        Full-Stack Projects
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            {{ $FullStackProjects }}
                                         </h5>
                                     </div>
                                 </div>

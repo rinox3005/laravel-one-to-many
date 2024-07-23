@@ -14,10 +14,13 @@ class DashboardController extends Controller
     public function index()
     {
         $totalProjects = Project::count();
-        $completedProjects = Project::where('status', 'completed')->count(); 
-        $pendingProjects = Project::where('status', 'pending')->count(); 
+        $completedProjects = Project::where('status', 'completed')->count();
+        $inProgressProjects = Project::where('status', 'in progress')->count();
+        $FrontEndProjects = Project::where('type_id', '1')->count();
+        $BackEndProjects = Project::where('type_id', '2')->count();
+        $FullStackProjects = Project::where('type_id', '3')->count();
 
-        return view('admin.dashboard', compact('totalProjects', 'completedProjects', 'pendingProjects'));
+        return view('admin.dashboard', compact('totalProjects', 'completedProjects', 'inProgressProjects', 'FrontEndProjects', 'BackEndProjects', 'FullStackProjects'));
     }
 
     /**
