@@ -25,7 +25,6 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        $types = ['Front-End', 'Back-End', 'Full-Stack'];
         $programmingLanguages = ['PHP', 'JavaScript', 'Vite', 'Vue', 'HTML', 'CSS', 'Laravel'];
         $statuses = ['Completed', 'In Progress'];
 
@@ -49,7 +48,6 @@ class ProjectController extends Controller
 
         $project = new Project();
         $project->title = $data['title'];
-        $project->type = $data['type'];
         $project->description = $data['description'];
         $project->key_features = $data['key_features'];
         $project->programming_language = $data['programming_language'];
@@ -75,7 +73,6 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        $types = ['Front-End', 'Back-End', 'Full-Stack'];
         $programmingLanguages = ['PHP', 'JavaScript', 'Vite', 'Vue', 'HTML', 'CSS', 'Laravel'];
         $statuses = ['Completed', 'In Progress'];
 

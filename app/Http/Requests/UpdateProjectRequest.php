@@ -24,7 +24,6 @@ class UpdateProjectRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'min:5', 'max:255', Rule::unique('projects')->ignore($this->route('project'))],
-            'type' => 'required|string|max:100',
             'description' => 'nullable|string',
             'key_features' => 'nullable|string',
             'link_to_website' => 'nullable|url',
@@ -40,7 +39,6 @@ class UpdateProjectRequest extends FormRequest
             'title.min' => 'The title must be at least 5 characters.',
             'title.max' => 'The title may not be greater than 255 characters.',
             'title.unique' => 'The title has already been taken.',
-            'type.required' => 'The type is required.',
             'programming_language.required' => 'The programming language is required.',
             'status.required' => 'The status is required.',
             'status.max' => 'The status may not be greater than 20 characters.',
