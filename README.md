@@ -1,29 +1,41 @@
-# Laravel Boolfolio - Base
+# Laravel Boolfolio - Project Typology
 
-Creare con Laravel un sistema di gestione del Portfolio di progetti.
+Utilizzando il codice della repo laravel-auth come base aggiungere una nuova entità Type.
 
-# Descrizione
-
-Installare laravel breeze per utilizzare il sistema di autenticazione.
+Questa entità rappresenta la tipologia di progetto ed è in relazione one to many con i progetti.
 
 ## Milestone 1
 
-Autenticazione: partire con l'autenticazione e la creazione di un layout per back-office.
+Creare la migration per la tabella types.
 
 ## Milestone 2
 
-Creazione del modello Project con relativa migrazione, seeder, controller e rotte
+Creare il model Type.
 
-# Bonus
+## Milestone 3
 
-Per la parte di back-office creare un resource controller Admin\ProjectController per gestire tutte le operazioni CRUD dei progetti.
+Creare la migration di modifica per la tabella projects per aggiungere la chiave esterna.
 
-Implementare la validazione dei dati dei Progetti nelle operazioni CRUD che lo richiedono usando due form requests.
+## Milestone 4
+
+Aggiungere ai model Type e Project i metodi per definire la relazione one to many.
+
+## Milestone 5
+
+Visualizzare nella pagina di dettaglio di un progetto la tipologia associata, se presente.
+
+## Milestone 6
+
+Permettere all’utente di associare una tipologia nella pagina di creazione e modifica di un progetto.
+
+## Milestone 7
+
+gestire il salvataggio dell’associazione progetto-tipologia con opportune regole di validazione
+
+# Bonus 1
+
+Creare il seeder per il model Type.
 
 # Bonus 2
 
-Modificare il comportamento di default di laravel creando un campo SLUG per ogni progetto in riferimento a quello per le operazioni di EDIT, SHOW, CREATE, DELETE.
-
-# Bonus 3
-
-Creare una versione pubblica dei progetti creando un controller Guest\ProjectController
+Aggiungere le operazioni CRUD per il model Type, in modo da gestire le tipologie di progetto direttamente dal pannello di amministrazione.
