@@ -86,6 +86,13 @@ class ProjectController extends Controller
 
         // Handle file upload
         if ($request->hasFile('preview')) {
+
+            // cancella la vecchia immagine, se esiste, prima di caricare quella nuova
+            if ($project->preview_path) {
+                $oldFilePath = str_replace('storage/', '', $project->preview_path);
+                Storage::disk('public')->delete($oldFilePath);
+            }
+
             $file = $request->file('preview');
             $fileName = $file->getClientOriginalName();
             $imagePath = $file->storeAs('images', $fileName, 'public');
