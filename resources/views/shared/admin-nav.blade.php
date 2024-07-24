@@ -2,7 +2,7 @@
     <div class="container">
         <a
             class="navbar-brand d-flex align-items-center"
-            href="{{ url("/") }}"
+            href="{{ url("/admin") }}"
         >
             <div class="logo_guest d-flex align-items-center">
                 <img

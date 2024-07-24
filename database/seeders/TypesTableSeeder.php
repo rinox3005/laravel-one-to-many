@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Type;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 
 class TypesTableSeeder extends Seeder
@@ -14,8 +15,11 @@ class TypesTableSeeder extends Seeder
      */
     public function run(): void
     {
+        Schema::disableForeignKeyConstraints();
 
-        $types = ['Front-End', 'Back-End', 'Full-Stack'];
+        Type::truncate();
+
+        $types = ['Front-End', 'Back-End', 'Full-Stack', 'AI'];
 
         foreach ($types as $type) {
 
@@ -26,5 +30,6 @@ class TypesTableSeeder extends Seeder
 
             $new_type->save();
         }
+        Schema::enableForeignKeyConstraints();
     }
 }
