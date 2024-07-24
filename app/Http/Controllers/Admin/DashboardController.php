@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\Type;
 
 class DashboardController extends Controller
 {
@@ -16,9 +17,16 @@ class DashboardController extends Controller
         $totalProjects = Project::count();
         $completedProjects = Project::where('status', 'completed')->count();
         $inProgressProjects = Project::where('status', 'in progress')->count();
-        $FrontEndProjects = Project::where('type_id', '1')->count();
-        $BackEndProjects = Project::where('type_id', '2')->count();
-        $FullStackProjects = Project::where('type_id', '3')->count();
+
+        // ottengo i tipi dei progetti per nome
+        $frontEndType = Type::where('name', 'Front-End')->first();
+        $backEndType = Type::where('name', 'Back-End')->first();
+        $fullStackType = Type::where('name', 'Full-Stack')->first();
+
+        // ottengo il totale dei progetti che hanno quel type indipendentemente dall'id numerico
+        $FrontEndProjects = Project::where('type_id', $frontEndType->id)->count();
+        $BackEndProjects = Project::where('type_id', $backEndType->id)->count();
+        $FullStackProjects = Project::where('type_id', $fullStackType->id)->count();
 
         return view('admin.dashboard', compact('totalProjects', 'completedProjects', 'inProgressProjects', 'FrontEndProjects', 'BackEndProjects', 'FullStackProjects'));
     }
