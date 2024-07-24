@@ -106,7 +106,8 @@ class ProjectController extends Controller
     {
         // Check if the project has a linked image and delete it
         if ($project->preview_path) {
-            Storage::delete($project->preview_path);
+            $filePath = str_replace('storage/', '', $project->preview_path);
+            Storage::disk('public')->delete($filePath);
         }
 
         $project_title = $project->title;
