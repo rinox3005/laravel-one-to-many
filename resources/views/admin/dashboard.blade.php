@@ -21,6 +21,12 @@
                     >
                         Projects
                     </a>
+                    <a
+                        href="{{ route("admin.types.index") }}"
+                        class="list-group-item list-group-item-action"
+                    >
+                        Types
+                    </a>
                     <a href="#" class="list-group-item list-group-item-action">
                         Profile
                     </a>

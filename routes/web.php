@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Guest\PageController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -38,6 +39,11 @@ Route::middleware(['auth', 'verified'])
         //projects
         Route::resource('projects', ProjectController::class)->parameters([
             'projects' => 'project:slug',
+        ]);
+
+        //types
+        Route::resource('projects/types', TypeController::class)->parameters([
+            'types' => 'type:slug',
         ]);
     });
 
