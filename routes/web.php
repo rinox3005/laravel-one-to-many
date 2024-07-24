@@ -36,14 +36,14 @@ Route::middleware(['auth', 'verified'])
         // admin dashboard
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-        //projects
-        Route::resource('projects', ProjectController::class)->parameters([
-            'projects' => 'project:slug',
-        ]);
-
         //types
         Route::resource('projects/types', TypeController::class)->parameters([
             'types' => 'type:slug',
+        ]);
+
+        //projects
+        Route::resource('projects', ProjectController::class)->parameters([
+            'projects' => 'project:slug',
         ]);
     });
 

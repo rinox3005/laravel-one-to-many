@@ -7,38 +7,62 @@
 @section("content")
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-3 mt-4">
+            <div class="col-2 mt-4">
                 <div class="list-group">
                     <a
                         href="#"
-                        class="list-group-item list-group-item-action active"
+                        class="list-group-item list-group-item-action active fw-semibold fs-4"
                     >
                         Dashboard
                     </a>
                     <a
-                        href="{{ route("admin.projects.index") }}"
+                        href="#projectSubmenu"
                         class="list-group-item list-group-item-action"
+                        data-bs-toggle="collapse"
+                        aria-expanded="false"
+                        id="projectSubmenuToggle"
                     >
-                        Projects
+                        <div
+                            class="d-flex align-items-center justify-content-between fw-semibold"
+                        >
+                            Projects
+                            <i
+                                class="fas fa-angle-down submenu-icon"
+                                id="submenuIcon"
+                            ></i>
+                        </div>
                     </a>
+                    <div class="collapse" id="projectSubmenu">
+                        <a
+                            href="{{ route("admin.projects.index") }}"
+                            class="list-group-item list-group-item-action text-dark"
+                        >
+                            All Projects
+                        </a>
+                        <a
+                            href="{{ route("admin.types.index") }}"
+                            class="list-group-item list-group-item-action text-dark"
+                        >
+                            Types
+                        </a>
+                    </div>
+
                     <a
-                        href="{{ route("admin.types.index") }}"
-                        class="list-group-item list-group-item-action"
+                        href="#"
+                        class="list-group-item list-group-item-action fw-semibold"
                     >
-                        Types
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
                         Profile
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action">
+                    <a
+                        href="#"
+                        class="list-group-item list-group-item-action fw-semibold"
+                    >
                         Settings
                     </a>
                 </div>
             </div>
-            <div class="col-9 mt-4">
+            <div class="col-10 mt-4">
                 <div class="card">
-                    <div class="card-header">{{ __("Dashboard") }}</div>
-
                     <div class="card-body">
                         @if (session("status"))
                             <div class="alert alert-success" role="alert">
@@ -123,8 +147,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Add more sections or content as needed -->
                     </div>
                 </div>
             </div>
