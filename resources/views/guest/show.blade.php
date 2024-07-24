@@ -30,7 +30,7 @@
                         <div class="col-md-6">
                             <p>
                                 <strong>Type:</strong>
-                                {{ $project->type->name }}
+                                {{ $project->type?->name ?: "No type set" }}
                             </p>
                         </div>
                         <div class="col-md-6">

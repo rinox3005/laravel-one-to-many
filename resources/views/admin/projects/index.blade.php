@@ -30,9 +30,13 @@
                 <li
                     class="list-group-item d-flex justify-content-between align-items-center"
                 >
-                    <div>
-                        <h6>
-                            <strong>ID:</strong>
+                    <div class="d-flex align-items-center">
+                        <img
+                            src="{{ $project->preview_path ? asset($project->preview_path) : Vite::asset("resources/img/project-placeholder-mini.png") }}"
+                            alt="{{ $project->id }} Preview"
+                            class="img-thumbnail preview-index"
+                        />
+                        <h6 class="mb-0 ms-2">
                             {{ $project->id }} - {{ $project->title }}
                         </h6>
                     </div>

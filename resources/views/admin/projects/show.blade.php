@@ -88,15 +88,14 @@
                             </div>
                         @endif
                     </div>
-                    @if ($project->preview_path)
-                        <div class="col-md-3 text-center">
-                            <img
-                                src="{{ asset($project->preview_path) }}"
-                                alt="{{ $project->title }} Preview"
-                                class="img-thumbnail preview-show"
-                            />
-                        </div>
-                    @endif
+
+                    <div class="col-md-3 text-center">
+                        <img
+                            src="{{ $project->preview_path ? asset($project->preview_path) : Vite::asset("resources/img/project-placeholder-show.png") }}"
+                            alt="{{ $project->title }} Preview"
+                            class="img-thumbnail preview-show"
+                        />
+                    </div>
                 </div>
                 <div class="d-flex justify-content-end">
                     <a
